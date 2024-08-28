@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Stuff</title>
+</head>
+<body>
+    <h1>Chat Stuff</h1>
+
+    <div>
+        <label>User ID:</label>
+        <input type="text" id="userId" placeholder="Enter your user ID"/>
+        <button onclick="connect()">Connect</button>
+    </div>
+
+    <div id="chat-window" style="display: none;">
+        <h2>Chat Room</h2>
+        <div id="chat"></div>
+
+   
+        <form id="message-form">
+            <input type="text" id="recipientId" placeholder="Recipient User ID" />
+            <input type="text" id="message" placeholder="Enter your message"/>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script src="websocket-chat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js" integrity="sha512-1QvjE7BtotQjkq8PxLeF6P46gEpBRXuskzIVgjFpekzFVF4yjRgrQvTG1MTOJ3yQgvTteKAcO7DSZI92+u/yZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</body>
+</html>
