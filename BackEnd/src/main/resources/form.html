@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+</head>
+<body>
+<h1>User Information Form</h1>
+<form th:action="@{/api/users/post}" method="post" th:object="${user}">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" th:field="*{firstName}" required>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" th:field="*{email}" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" th:field="*{password}" required>
+
+    <label for="isVolunteer">Is Volunteer:</label>
+    <input type="checkbox" id="isVolunteer" name="isVolunteer" th:field="*{isVolunteer}">
+
+    <label for="interests">Interests (separated by comma):</label>
+    <input type="text" id="interests" name="interests" th:field="*{interests}">
+
+    <label for="sessionIds">Session IDs (separated by comma):</label>
+    <input type="text" id="sessionIds" name="sessionIds" th:field="*{sessionIds}">
+
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
