@@ -3,15 +3,27 @@ package com.team_project.team_project.controllers;
 import com.team_project.team_project.models.FinancialAid;
 import org.springframework.beans.factory.annotation.Autowired;
 
+<<<<<<< HEAD
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+=======
+<<<<<<< HEAD
+import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+=======
+>>>>>>> c2ec480de972d7c57674b33c1ee19ff8924042a3
+>>>>>>> 09d89d4db54456ebabca1aec1cd143e55468a322
 import org.springframework.web.bind.annotation.*;
 
 import com.team_project.team_project.models.User;
 import com.team_project.team_project.repository.UserRepository;
 
 import java.util.List;
+<<<<<<< HEAD
+=======
 import java.util.stream.Collectors;
+>>>>>>> c2ec480de972d7c57674b33c1ee19ff8924042a3
 
 @RestController
 @RequestMapping("/api/users")
@@ -31,6 +43,21 @@ public class UserController {
 
         return userRepository.findById(userId).orElse(null);
     }
+<<<<<<< HEAD
+    @GetMapping("/")
+    public List<User> userList(){
+        return userRepository.findAll();
+    }
+    @PostMapping
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        if (userRepository.findById(user.getId()).isPresent()) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT); // Conflict if user already exists
+        }
+        user.setPassword(user.getPassword());
+        User savedUser = userRepository.save(user);
+        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+    }
+=======
 
     //Method to get the user's form
     @GetMapping("/userForm")
@@ -64,6 +91,7 @@ public class UserController {
         return "redirect:/api/users/userForm";
     }
 
+>>>>>>> c2ec480de972d7c57674b33c1ee19ff8924042a3
 }
 
 
