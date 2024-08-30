@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Aid Application</title>
+</head>
+<body>
+<h1>Financial Aid Application</h1>
+<form action="/api/FinancialAid/checkEligibility" method="post">
+    <label for="annualIncome">What is your annual adjusted gross income? :</label>
+    <input type="number" id="annualIncome" name="annualIncome" required><br><br>
+
+    <label for="childAnnualIncome">What is your child's annual AGI?</label>
+    <input type="number" id="childAnnualIncome" name="childAnnualIncome" required><br><br>
+
+    <label for="bankInvestment">How much do you have in non-retirement bank and investment accounts?</label>
+    <input type="number" id="bankInvestment" name="bankInvestment" required><br><br>
+
+    <label for="childBankInvestment">How much does your child have in non-retirement bank and investment accounts?</label>
+    <input type="number" id="childBankInvestment" name="childBankInvestment" required><br><br>
+
+    <label for="savings529Coverdell">How much do you and your child have in 529 plans and Coverdell ESAs?</label>
+    <input type="number" id="savings529Coverdell" name="savings529Coverdell" required><br><br>
+
+    <label for="membersOfHousehold">How many members will you have in your household when your child enrolled in college?</label>
+    <input type="number" id="membersOfHousehold" name="membersOfHousehold" required><br><br>
+
+    <input type="submit" value="Check Eligibility">
+</form>
+</body>
+</html>

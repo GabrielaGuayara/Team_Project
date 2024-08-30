@@ -16,6 +16,7 @@ public class User {
     private String lastName;
     private String email;
     private String password;
+
     // If the user is a volunteer then they would get a chance to take volunteer
     // opportunities;
     private Boolean isVolunteer;

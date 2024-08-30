@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>User Information Form</h1>
-<form th:action="@{/api/users/post}" method="post" th:object="${user}">
+<form th:action="@{/api/users/createUsers}" method="post" th:object="${userForm}">
     <label for="firstName">First Name:</label>
     <input type="text" id="firstName" name="firstName" th:field="*{firstName}" required>
 
@@ -23,13 +23,19 @@
     <label for="isVolunteer">Is Volunteer:</label>
     <input type="checkbox" id="isVolunteer" name="isVolunteer" th:field="*{isVolunteer}">
 
-    <label for="interests">Interests (separated by comma):</label>
-    <input type="text" id="interests" name="interests" th:field="*{interests}">
+    <fieldset>
+        <legend>Interests:</legend>
+        <label><input type="checkbox" name="interests" th:value="'Employment'" th:field="*{interests}" /> Employment</label>
+        <label><input type="checkbox" name="interests" th:value="'LegalAid'" th:field="*{interests}" /> Legal Aid</label>
+        <label><input type="checkbox" name="interests" th:value="'Education'" th:field="*{interests}" /> Education</label>
+        <label><input type="checkbox" name="interests" th:value="'HealthCare'" th:field="*{interests}" /> Health Care</label>
+    </fieldset>
 
     <label for="sessionIds">Session IDs (separated by comma):</label>
     <input type="text" id="sessionIds" name="sessionIds" th:field="*{sessionIds}">
 
     <button type="submit">Submit</button>
 </form>
+
 </body>
 </html>

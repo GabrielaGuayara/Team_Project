@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eligibility Result</title>
+</head>
+<body>
+<h1>Financial Aid Eligibility Result</h1>
+<p th:if="${eligible}">You are eligible for financial aid!</p>
+<p th:if="${!eligible}">You are not eligible for financial aid.</p>
+<p th:if="${eligible}">Apply for the grant here: <a th:href="${grantLink}" th:text="${grantLink}"></a></p>
+</body>
+</html>
+
