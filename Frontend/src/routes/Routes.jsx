@@ -7,6 +7,7 @@ import Education from "../screens/Education";
 import Healthcare from "../screens/Healthcare";
 import Employment from "../screens/Employment";
 import VolunteerForm from "../screens/Volunteer/Forms/VolunteerForm";
+import VolunteerEventForm from "../screens/Volunteer/Forms/VolunteerEventForm";
 function Routes() {
   return (
     <>
@@ -17,7 +18,8 @@ function Routes() {
         <Route path="/volunteer" element={<Volunteer />} />
         <Route path="/legal" element={<Legal />} />
         <Route path="/employment" element={<Employment />} />
-        <Route path="/volunteerSignUp" element={<VolunteerForm />} />
+        <Route path="/volunteer-sign-up" element={<VolunteerForm />} />
+        <Route path="/volunteer-event-form" element={<VolunteerEventForm/>}/>
       </R>
     </>
   );
