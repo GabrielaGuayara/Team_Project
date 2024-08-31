@@ -27,7 +27,7 @@ function AddressAutocomplete(props) {
   };
 
   return (
-    <div style={{ position: "relative", width: "100%" }}>
+    <div className="relative w-full">
       <input
         type="text"
         value={query}
@@ -52,10 +52,7 @@ function AddressAutocomplete(props) {
             <div
               key={index}
               onClick={() => handleSuggestionClick(suggestion)}
-              style={{
-                padding: "8px",
-                cursor: "pointer",
-              }}
+              className="p-2 cursor-pointer"
             >
               {suggestion.display_name}
             </div>
