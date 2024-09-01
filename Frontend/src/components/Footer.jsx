@@ -1,11 +1,11 @@
 import React from "react";
-import Logo from "../assets/logo.svg"
+import Logo from "../assets/logo.svg";
 
 function Footer() {
   return (
-    <footer className="footer bg-base-200 text-base-content p-4 fixed bottom-0">
+    <footer className="footer bg-base-200 text-base-content p-2 bottom-0">
       <aside>
-        <img src={Logo} className="h-5"/>
+        <img src={Logo} className="h-5" />
         <p>
           GAS Industries Ltd.
           <br />

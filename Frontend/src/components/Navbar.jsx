@@ -14,14 +14,14 @@ export default function Navbar() {
           <li></li>
 
           <li>
-            <Link className="text-lg" to="Employment">
+            <Link className="text-lg" to="/employment">
               Employment
             </Link>
           </li>
 
           <li></li>
           <li>
-            <Link className="text-lg" to="education">
+            <Link className="text-lg" to="/education">
               Education
             </Link>
           </li>

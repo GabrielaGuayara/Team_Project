@@ -4,14 +4,13 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Routes from "./routes/Routes";
 import Footer from "./components/Footer";
-import Carousel from "./components/Carousel";
+import Dashboard from "./screens/Volunteer/Dashboard/VolunteerApplicantsDashboard";
+import VolunteerApplicantsDashboard from "./screens/Volunteer/Dashboard/VolunteerApplicantsDashboard";
 
 function App() {
   return (
     <>
-    
       <Navbar />
-      <Carousel/>
       <Routes />
       <Footer />
     </>
