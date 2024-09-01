@@ -70,7 +70,7 @@ function VolunteerEventForm() {
                 </div>
 
                 <label className="block dark:text-white font-semibold mb-2">
-                  What Type Of Volunteer Service Is Your Event?
+                  What Type Of Volunteer Services Do You Need?
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 mb-4">
                   <div className="flex items-center">
@@ -159,7 +159,7 @@ function VolunteerEventForm() {
                     type="submit"
                     className="group relative flex w-full justify-center rounded-md border border-transparent bg-gray-800 px-8 mt-2 p-2 text-sm font-medium text-white btn btn-lg  text-lg"
                   >
-                    Lets Look For Volunteering Opportunities!
+                    Share My Volunteering Event
                   </button>
                 </div>
               </form>

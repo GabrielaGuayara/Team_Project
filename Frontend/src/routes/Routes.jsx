@@ -8,6 +8,8 @@ import Healthcare from "../screens/Healthcare";
 import Employment from "../screens/Employment";
 import VolunteerForm from "../screens/Volunteer/Forms/VolunteerForm";
 import VolunteerEventForm from "../screens/Volunteer/Forms/VolunteerEventForm";
+import VolunteerApplicantsDashboard from "../screens/Volunteer/Dashboard/VolunteerApplicantsDashboard";
+
 function Routes() {
   return (
     <>
@@ -19,7 +21,8 @@ function Routes() {
         <Route path="/legal" element={<Legal />} />
         <Route path="/employment" element={<Employment />} />
         <Route path="/volunteer-sign-up" element={<VolunteerForm />} />
-        <Route path="/volunteer-event-form" element={<VolunteerEventForm/>}/>
+        <Route path="/volunteer-event-form" element={<VolunteerEventForm />} />
+        <Route path="/testing" element={<VolunteerApplicantsDashboard />} />
       </R>
     </>
   );
