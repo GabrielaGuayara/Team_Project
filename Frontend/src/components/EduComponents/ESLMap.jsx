@@ -46,7 +46,7 @@ const ESLMap = () => {
         </select>
         {selectedCenter && <InfoBox center={selectedCenter} map={map} />}
       </div>
-      <LoadScript googleMapsApiKey="AIzaSyBEVBKOPuV5w8d2G578WIHpAoOKPHkOcKc">
+      <LoadScript googleMapsApiKey="">
         <GoogleMap
          mapContainerStyle={{ height: "400px", width: "600px" }}
           center={center}
