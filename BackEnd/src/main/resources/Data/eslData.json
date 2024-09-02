@@ -23,5 +23,16 @@
 "info": "718-271-8383",
 "latitude": "40.7469",
 "longitude": "-73.8637"
-}]
+},
+
+  {
+    "id": 4,
+    "name": "High School for Arts & Business YABC",
+    "borough": "Queens",
+    "info": "718-271-8383",
+    "latitude": "40.7469",
+    "longitude": "-73.8637"
+  }
+
+]
 
