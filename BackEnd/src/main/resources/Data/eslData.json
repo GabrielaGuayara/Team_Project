@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+  "name": "John Adams YABC",
+  "borough": "Queens",
+  "info": "(718) 322-0581",
+    "latitude": "40.679639",
+  "longitude": "-73.837298"
+},
+{
+  "id": 2,
+"name": "Erasmus Campus YABC",
+"borough": "Brooklyn",
+"info": "(718) 564-2590",
+  "latitude": "40.649787",
+  "longitude": "-73.95855"
+},
+
+{
+  "id": 3,
+"name": "High School for Arts & Business YABC",
+"borough": "Queens",
+"info": "718-271-8383",
+"latitude": "40.7469",
+"longitude": "-73.8637"
+}]
+

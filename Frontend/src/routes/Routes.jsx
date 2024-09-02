@@ -10,6 +10,7 @@ function Routes() {
   return (
     <>
       <R>
+        <Route path="/home" element={<Homepage />} />
         <Route path="/" element={<Homepage />} />
         <Route path="/education" element={<Education />} />
         <Route path="/healthcare" element={<Healthcare />} />
