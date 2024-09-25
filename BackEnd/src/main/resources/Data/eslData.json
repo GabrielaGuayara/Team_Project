@@ -1,0 +1,124 @@
+[
+  {
+    "name": "English classes for non-English speakers",
+    "organization": "Brooklyn Public Library (BPL)",
+    "borough": "Manhattan",
+    "longitude": "-73.94347",
+    "latitude": "40.80605",
+    "address": "9 West 124th Street",
+    "zipcode": "10027",
+    "phoneNumber": "917-275-6975",
+    "type": "English for Speakers of Other Languages",
+    "link": "https://www.nypl.org/events/classes/esol/english-classes"
+  },
+  {
+    "name": "We Speak NYC",
+    "organization": "NYC Mayor's Office of Immigrant Affairs (MOIA)",
+    "borough": "Manhattan",
+    "longitude": "-74.00708",
+    "latitude": "40.71321",
+    "address": "253 Broadway, 8th floor",
+    "zipcode": "10007",
+    "phoneNumber": "212-788-7654",
+    "type": "English for Speakers of Other Languages",
+    "link": "https://wespeaknyc.cityofnewyork.us/classes-near-you/"
+  },
+
+  {
+    "name": "Bronx Adult Learning Center",
+    "organization": "NYC Public Schools (Department of Education DOE)",
+    "borough": "Bronx",
+    "longitude": "-73.82721",
+    "latitude": "40.83183",
+    "address": "3450 E Tremont Ave",
+    "zipcode": "10465",
+    "phoneNumber": "212-788-7654",
+    "type": "Adult Basic Education",
+    "link": "https://adultedu.nyc/"
+  },
+  {
+    "name": "Adult Education @ PS 13",
+    "organization": "NYC Public Schools (Department of Education DOE)",
+    "borough": "Brooklyn",
+    "longitude": "-73.89375",
+    "latitude": "40.66362",
+    "address": "557 Granville Payne Avenue",
+    "zipcode": "11207",
+    "phoneNumber": "718-498-3717",
+    "type": "Adult Basic Education",
+    "link": "https://www.schools.nyc.gov/schools/K013"
+  },
+  {
+    "name": "Melrose Alternate Learning Center",
+    "organization": "NYC Public Schools (Department of Education DOE)",
+    "borough": "Brooklyn",
+    "longitude": "-73.92957",
+    "latitude": "40.70215",
+    "address": "271 Melrose Street",
+    "zipcode": "11206",
+    "phoneNumber": "718-821-5484",
+    "type": "Adult Basic Education",
+    "link": "https://infohub.nyced.org/in-our-schools/programs/district-79/alternate-learning-centers"
+  },
+  {
+    "name": "Mid-Manhattan Adult Learning Center",
+    "organization": "NYC Public Schools (Department of Education DOE)",
+    "borough": "Manhattan",
+    "longitude": "-73.95186",
+    "latitude": "40.80629",
+    "address": "212 W 120th St",
+    "zipcode": "10027",
+    "phoneNumber": "212-666-1920",
+    "type": "Adult Basic Education",
+    "link": "https://adultedu.nyc/"
+  },
+  {
+    "name": "Earn Your High School Equivalency (HSE)",
+    "organization": "Brooklyn Public Library Adult Learning",
+    "borough": "Brooklyn",
+    "longitude": "-73.95065",
+    "latitude": "40.72578",
+    "address": "107 Norman Ave",
+    "zipcode": "11222",
+    "phoneNumber": "718-968-7275",
+    "type": "High School Equivalency Preparation",
+    "link": "https://www.bklynlibrary.org/adult-learning/earn-your-hse"
+  },
+  {
+    "name": "Queens Adult Learning Center",
+    "organization": "NYC Public Schools (Department of Education DOE)",
+    "borough": "Queens",
+    "longitude": "-73.94016",
+    "latitude": "40.74793",
+    "address": " 27-35 Jackson Ave",
+    "zipcode": "11101",
+    "phoneNumber": "718-361-9480",
+    "type": "Adult Basic Education",
+    "link": "https://www.adultedschool2.org/"
+  },
+  {
+    "name": "English for Speakers of Other Languages (ESOL)",
+    "organization": "Brooklyn Public Library",
+    "borough": "Brooklyn",
+    "longitude": "-73.95065",
+    "latitude": "40.72578",
+    "address": "107 Norman Ave",
+    "zipcode": "11222",
+    "phoneNumber": "718-968-7275",
+    "type": "English for Speakers of Other Languages (ESOL)",
+    "link": "https://www.bklynlibrary.org/adult-learning/esol"
+  },
+  {
+    "name": "High School Equivalency Classes",
+    "organization": "NYC Public Schools (Department of Education DOE)",
+    "borough": "Bronx",
+    "longitude": "-73.88657",
+    "latitude": "40.88158",
+    "address": "100 West Mosholu Pkwy South",
+    "zipcode": "10466",
+    "phoneNumber": "718-557-2590.",
+    "type": "High School Equivalency Preparation",
+    "link": "http://p2g.nyc/dewitt-clinton/"
+  }
+]
+

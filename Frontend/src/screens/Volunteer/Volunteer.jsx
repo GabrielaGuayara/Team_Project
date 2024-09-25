@@ -9,7 +9,7 @@ function Volunteer() {
           <div className="flex justify-center">
             <Link
               className="text-lg btn btn-lg  w-7/12 mt-72"
-              to="/volunteer-event-form"
+              to="/financialAidForm"
             >
               Create A Volunteer Opportunities for your event!
             </Link>

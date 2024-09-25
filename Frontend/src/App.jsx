@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import "./App.css";
+import 'leaflet/dist/leaflet.css';
 import Navbar from "./components/Navbar";
 import Routes from "./routes/Routes";
 import Footer from "./components/Footer";
@@ -13,6 +14,7 @@ function App() {
       <Navbar />
       <Routes />
       <Footer />
+    
     </>
   );
 }
