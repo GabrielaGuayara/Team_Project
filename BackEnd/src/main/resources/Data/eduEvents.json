@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Creating Your StudentAid.gov Account",
+    "description": "Join us for this 15-minute presentation, where we’ll give helpful information on how to create your account.",
+    "location": "Virtual",
+    "url": "https://ny-gov.zoomgov.com/webinar/register/WN_XoZ_gWAZSR65B8t0hyPWnQ#/registration",
+    "type": "Financial Aid",
+    "date": "2024-10-07",
+    "dateTime": "5:00 PM - 6:00 PM"
+  },
+  {
+    "name": "Senior Basics Presentation",
+    "description": "This event is designed to equip high school seniors with essential information and tools for a smooth transition to college.",
+    "location": "Virtual",
+    "url": "https://ny-gov.zoomgov.com/j/1615002017",
+    "type": "College 101",
+    "date": "2024-10-10",
+    "dateTime": "6:00 PM - 7:00 PM"
+  },
+
+  {
+    "name": "Scholarships Panel",
+    "description": "In this event our financial aid experts will walk you through what scholarships and how to apply",
+    "location": "Virtual",
+    "url": "https://ny-gov.zoomgov.com/webinar/register/WN_Z4se1S5JQKSjbrgSB787Fw#/registration",
+    "type": "Financial Aid",
+    "date": "2024-10-15",
+    "dateTime": "6:00 PM - 7:00 PM"
+  },
+  {
+    "name": "Exploring Other Pathways After High School",
+    "description": "Exploring non-traditional pathways after high school such as job training, apprentice, and the military.",
+    "location": "Virtual",
+    "url": "https://ny-gov.zoomgov.com/webhttps://ny-gov.zoomgov.com/webinar/register/WN_6ul6J0JsSMKyoterCvpeBA#/registration",
+    "type": "Other",
+    "date": "2024-10-16",
+    "dateTime": "6:00 PM - 7:00 PM"
+  },
+  {
+    "name": "Senior Basics Presentation",
+    "description": "Covering topics such as application processes, financial aid, scholarship opportunities, and time management.",
+    "location": "Virtual",
+    "url": "https://ny-gov.zoomgov.com/j/1615002017",
+    "type": "College 101",
+    "date": "2024-10-17",
+    "dateTime": "6:00 PM - 7:00 PM"
+  },
+  {
+    "name": "Creating Your StudentAid.gov Account",
+    "description": "Join us for this 15-minute presentation, where we’ll give helpful information on creating your account..",
+    "location": "Virtual",
+    "url": "https://ny-gov.zoomgov.com/j/1618975399",
+    "type": "Financial Aid",
+    "date": "2024-10-21",
+    "dateTime": "4:00 PM - 4:30 PM"
+  },
+  {
+    "name": "Senior Basics Presentation",
+    "description": "Covering topics such as application processes, financial aid, scholarship opportunities, and time management.",
+    "location": "Virtual",
+    "url": "https://ny-gov.zoomgov.com/j/1615002017",
+    "type": "College 101",
+    "date": "2024-10-22",
+    "dateTime": "6:00 PM - 7:00 PM"
+  },
+  {
+    "name": "The Senator Jose Peralta NYS Dream Act Panel Discussion",
+    "description": "The Senator José Peralta New York State DREAM Act which gives undocumented access to New York State‐administered student financial aid.",
+    "location": "Virtual",
+    "url": "https://ny-gov.zoomgov.com/webinar/register/WN_KOCrGqN1SdC7UexCkef9Ng#/registration",
+    "type": "Financial Aid",
+    "date": "2024-10-29",
+    "dateTime": "6:00 PM - 7:30 PM"
+  },
+  {
+    "name": "Special and Unusual Circumstances When Completing the FAFSA",
+    "description": "The Senator José Peralta New York State DREAM Act which gives undocumented access to New York State‐administered student financial aid.",
+    "location": "Virtual",
+    "url": "https://ny-gov.zoomgov.com/j/1601729302",
+    "type": "Other",
+    "date": "2024-11-19",
+    "dateTime": "6:00 PM - 7:00 PM"
+  },
+  {
+    "name": "HESC/APC FAFSA/TAP Completion/Corrections",
+    "description": "Covering topics such as application processes, financial aid, scholarship opportunities, and time management.",
+    "location": "Virtual",
+    "url": "https://ny-gov.zoomgov.com/meeting/register/vJItdOyurTkiHjMvH7IZpnbjsppw8LUn8NE#/registration",
+    "type": "Other",
+    "date": "2024-12-16",
+    "dateTime": "4:00 PM - 6:00 PM"
+  }
+]
