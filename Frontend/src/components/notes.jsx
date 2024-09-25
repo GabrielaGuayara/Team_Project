@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
-import InfoBox from '../EduComponents/Infobox';
+import InfoBox from './Infobox';
 
 
 const center = { lat: 40.712776, lng: -74.005974 };
@@ -33,7 +33,12 @@ const ESLMap = () => {
 
   return (
     <>
-      <div className="sidebar flex flex-col p-4">
+
+      <section id="eduheader" className="w-full min-h-[500px] bg-contain bg-center bg-no-repeat bg-yellow flex justify-center"
+   
+    >
+        <div className="flex flex-row justify-center items-start p-10">
+        <div className="sidebar flex flex-col p-4">
         <input type="text" placeholder="Search ESL Centers..." value={search} onChange={(e) => setSearch(e.target.value)}
         />
         <select value={filter} onChange={(e) => setFilter(e.target.value)}>
@@ -73,6 +78,14 @@ const ESLMap = () => {
           )}
         </GoogleMap>
       </LoadScript>
+
+        </div>
+    </section>
+
+
+
+
+     
     </>
   );
 }
