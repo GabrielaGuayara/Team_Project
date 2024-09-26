@@ -5,6 +5,8 @@ import io.jsonwebtoken.Jwts;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.team_project.team_project.models.SupportCounselor;
+
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
@@ -39,6 +41,15 @@ public class JWTUtils {
                 .signWith(key)
                 .compact();
 
+    }
+
+    public String generateToken(SupportCounselor counselor) {
+        return Jwts.builder()
+                .subject(counselor.getEmail())
+                .issuedAt(new Date(System.currentTimeMillis()))
+                .expiration(new Date(System.currentTimeMillis()))
+                .signWith(key)
+                .compact();
     }
 
     //Method to extract username

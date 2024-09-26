@@ -39,6 +39,13 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         final String jwtToken;
         final String userEmail;
 
+
+        String requestURI = request.getRequestURI();
+        if (requestURI.startsWith("/api/counselor") || requestURI.startsWith("/api/users") || requestURI.startsWith("/api/assistance-requests")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         if (authHeader == null || authHeader.isBlank()) {
             filterChain.doFilter(request, response);
             return;
