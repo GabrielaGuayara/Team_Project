@@ -1,32 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../authentication/AuthProvider";
 
-function Navbar() {
+function UserNavbar() {
+  const { logout } = useContext(AuthContext);
+  const handleLogout = () => {
+    logout();
+  };
   return (
-    <div className="navbar bg-base-200">
+    <div className="navbar bg-base-200 relative z-50">
       <div className="flex-1">
-        <Link className="btn btn-ghost normal-case text-xl" to="/">
-          HopeBridge
+        <Link className="btn btn-ghost text-xl" to="/">
+          HopeBridge - User
         </Link>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-3">
+          <li></li>
+
           <li>
             <Link className="text-lg" to="/employment">
               Employment
             </Link>
           </li>
+
+          <li></li>
           <li>
             <Link className="text-lg" to="/education">
               Education
             </Link>
           </li>
+          <li></li>
           <li>
             <Link className="text-lg" to="/support-counsel">
               Support Counsel
             </Link>
           </li>
-
+          <li></li>
           <li>
             <details className="relative z-50">
               <summary className="text-lg">Services</summary>
@@ -44,16 +54,19 @@ function Navbar() {
               </ul>
             </details>
           </li>
-
-          <li className="ml-4">
-            <Link to="/login" className="btn  btn-primary text-lg">
-              Login
-            </Link>
-          </li>
-          <li className="ml-4">
-            <Link to="/register" className="btn btn-primary text-lg">
-              Register
-            </Link>
+          <li></li>
+          <li>
+            <details className="relative z-50">
+              <summary className="text-lg">User</summary>
+              <ul className="bg-base-100 rounded-t-none p-1">
+                <li>
+                  <a>User Info</a>
+                </li>
+                <li>
+                  <a onClick={handleLogout}>Logout</a>
+                </li>
+              </ul>
+            </details>
           </li>
         </ul>
       </div>
@@ -61,4 +74,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default UserNavbar;

@@ -1,10 +1,14 @@
 package com.team_project.team_project.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Response {
 
     private int statusCode;
@@ -17,7 +21,4 @@ public class Response {
     private Integer id;
     private String email;
 
-
-    public void setId(Integer id) {
-    }
 }

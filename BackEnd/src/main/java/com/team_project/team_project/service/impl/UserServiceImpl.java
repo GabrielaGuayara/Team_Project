@@ -33,20 +33,23 @@ public class UserServiceImpl implements IUserService {
         Response response = new Response();
         try {
             if (user.getRole() == null || user.getRole().isBlank()) {
-                user.setRole("USER");
+                user.setRole("User");
             }
             if (userRepository.existsByEmail(user.getEmail())) {
                 throw new CustomException(user.getEmail() + " Already Exists");
             }
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             User savedUser = userRepository.save(user);
-
+            System.out.println("Saved user ID: " + savedUser.getId()); 
+            var token = jwtUtils.generateToken(savedUser);
             response.setStatusCode(200);
             response.setMessage("User registered successfully");
             response.setId(savedUser.getId());
             response.setEmail(savedUser.getEmail());
-            response.setRole(savedUser.getRole());
+            response.setRole(user.getRole());
             response.setName(savedUser.getFirstName());
+            response.setExpirationTime("7 Days");
+            response.setToken(token);
         } catch (CustomException e) {
             response.setStatusCode(400);
             response.setMessage(e.getMessage());
@@ -70,9 +73,10 @@ public class UserServiceImpl implements IUserService {
             var token = jwtUtils.generateToken(user);
             response.setStatusCode(200);
             response.setToken(token);
-            response.setRole(user.getRole());
+            response.setRole("User");
             response.setExpirationTime("7 Days");
             response.setMessage("Successful");
+            response.setEmail(user.getEmail());
             response.setId(user.getId());
             response.setName(user.getFirstName());
         } catch (CustomException e) {

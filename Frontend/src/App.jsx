@@ -1,20 +1,34 @@
-import { useState } from "react";
+import { useContext } from "react";
 
 import "./App.css";
-import 'leaflet/dist/leaflet.css';
+import "leaflet/dist/leaflet.css";
 import Navbar from "./components/Navbar";
 import Routes from "./routes/Routes";
 import Footer from "./components/Footer";
-import Dashboard from "./screens/Volunteer/Dashboard/VolunteerApplicantsDashboard";
-import VolunteerApplicantsDashboard from "./screens/Volunteer/Dashboard/VolunteerApplicantsDashboard";
+import SupportCounselorNavbar from "./components/SupportCounselorComponents/SupportCounselorNavbar";
+import UserNavbar from "./components/UserComponents/UserNavbar";
+import { AuthContext } from "./authentication/AuthProvider";
 
 function App() {
+  const { isAuthenticated, role } = useContext(AuthContext);
+
+  let navbar;
+
+  if (isAuthenticated) {
+    if (role === "Support Counselor") {
+      navbar = <SupportCounselorNavbar />;
+    } else if (role === "User") {
+      navbar = <UserNavbar />;
+    }
+  } else {
+    navbar = <Navbar />;
+  }
+
   return (
     <>
-      <Navbar />
+      {navbar}
       <Routes />
       <Footer />
-    
     </>
   );
 }

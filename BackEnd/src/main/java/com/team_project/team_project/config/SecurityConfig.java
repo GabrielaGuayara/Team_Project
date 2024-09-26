@@ -1,6 +1,5 @@
 package com.team_project.team_project.config;
 
-
 import com.team_project.team_project.security.JWTAuthFilter;
 import com.team_project.team_project.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableMethodSecurity
 public class SecurityConfig {
 
-
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
@@ -34,24 +32,27 @@ public class SecurityConfig {
     private JWTAuthFilter jwtAuthFilter;
 
     @Bean
-    public SecurityFilterChain securityFilterChain (HttpSecurity httpSecurity) throws Exception{
-        httpSecurity.csrf(AbstractHttpConfigurer :: disable)
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(request -> request
+                        .requestMatchers("/api/counselor/register", "/api/counselor/login", "/api/counselor").permitAll()
+                        .requestMatchers("/api/users/register", "/api/users/login").permitAll()
+                        .requestMatchers("/api/assistance-requests", "/api/assistance-requests/create", "/api/assistance-requests/all", "/api/assistance-requests/{id}", 
+                        "/api/assistance-requests/counselor/{counselorId}", "/api/assistance-requests/user/{userId}", "/api/assistance-requests/update/{id}", "/api/assistance-requests/delete/{id}").permitAll()
                         .requestMatchers("/auth/**").permitAll()
-                        //This secured endpoints for admins
+                        // This secured endpoints for admins
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
-
         return httpSecurity.build();
     }
 
     @Bean
-    public AuthenticationProvider authenticationProvider(){
+    public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(customUserDetailsService);
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
@@ -60,13 +61,13 @@ public class SecurityConfig {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+            throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 }

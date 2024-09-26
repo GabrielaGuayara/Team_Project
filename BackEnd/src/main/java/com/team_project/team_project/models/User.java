@@ -2,12 +2,15 @@ package com.team_project.team_project.models;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Data
 @Entity
@@ -21,7 +24,7 @@ public class User implements UserDetails {
     private String email;
     private String password;
 
-    //This variable will be user for user authentification
+    // This variable will be user for user authentification
     private String role;
 
     // If the user is a volunteer then they would get a chance to take volunteer
@@ -44,7 +47,11 @@ public class User implements UserDetails {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> sessionIds;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<AssistanceRequest> assistanceRequests;
+
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role));
     }
@@ -73,6 +80,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 
 }
