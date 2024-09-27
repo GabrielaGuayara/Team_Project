@@ -2,13 +2,12 @@ package com.team_project.team_project.models;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Data
 @Entity
-@Table(name="eslCenters")
-public class ESLCenter {
+@Table(name="eduCenters")
+public class EduCenter {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;

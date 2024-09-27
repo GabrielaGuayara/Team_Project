@@ -21,4 +21,7 @@ public class EducationalEvents {
     private String date;
     private String dateTime;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 }

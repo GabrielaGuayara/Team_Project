@@ -1,5 +1,6 @@
 package com.team_project.team_project.service.impl;
 
+import com.team_project.team_project.exception.ResourceNotFoundException;
 import com.team_project.team_project.models.EducationalEvents;
 import com.team_project.team_project.repository.EventRepository;
 import com.team_project.team_project.service.interfaces.EventService;
@@ -32,31 +33,24 @@ public class EventServiceImpl implements EventService {
         return eventRepository.save(event);
     }
 
-    @Override
     public EducationalEvents updateEvent(Integer id, EducationalEvents eventDetails) {
-        EducationalEvents updateEvent = eventRepository.findById(id).get();
-        if(Objects.nonNull(eventDetails.getName())){
-            updateEvent.setName(eventDetails.getName());
+            EducationalEvents event = eventRepository.findById(id)
+                    .orElseThrow(() -> new ResourceNotFoundException("Event not found"));
+            event.setName(eventDetails.getName());
+            event.setDateTime(eventDetails.getDateTime());
+            event.setLocation(eventDetails.getLocation());
+            event.setDescription(eventDetails.getDescription());
+            event.setUrl(eventDetails.getUrl());
+            event.setDate(eventDetails.getDate());
+
+        return eventRepository.save(event);
         }
 
-        if(Objects.nonNull(eventDetails.getDescription())){
-            updateEvent.setDescription(eventDetails.getDescription());
-        }
-
-        if(Objects.nonNull(eventDetails.getLocation())){
-            updateEvent.setLocation(eventDetails.getLocation());
-        }
-
-//        if(Objects.nonNull(eventDetails.getDateTime())){
-//            updateEvent.setDateTime(eventDetails.getDateTime());
-//        }
-        return eventRepository.save(updateEvent);
-
-    }
 
     @Override
     public void deleteEvent(Integer id) {
         eventRepository.deleteById(id);
     }
+
 
 }
