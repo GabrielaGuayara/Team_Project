@@ -33,6 +33,8 @@ import JobseekerProfile from "../screens/Employment/JobseekerProfile";
 import AvailaibleJobs from "../screens/Employment/AvailaibleJobs";
 import FindTalent from "../screens/Employment/FindTalent";
 import PostJob from "../screens/Employment/PostJob";
+import Dashboard from "../components/adminComponents/dashboard";
+
 function Routes() {
   return (
     <>
@@ -50,6 +52,7 @@ function Routes() {
           <Route path="/volunteer" element={<Volunteer />} />
           <Route path="/legal" element={<Legal />} />
           <Route path="/employment" element={<Employment />} />
+
 
           {/* User Routes */}
           <Route path="/register" element={<UserRegisterForm />} />
@@ -91,6 +94,10 @@ function Routes() {
           />
 
           <Route path="/testing" element={<VolunteerApplicantsDashboard />} />
+        
+          {/* Volunteer Routes */}
+
+          {/* ADMIN route */}
           <Route path="/adminLogin" element={<AdminLogin />} />
           <Route path="/adminSinup" element={<AdminSignUp />} />
           {/* Volunteer Routes */}
@@ -105,6 +112,9 @@ function Routes() {
           <Route path="/post-job" element={<PostJob />} />
           {/* Employemnt routes */}
           
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+       
+
         </R>
       </AuthProvider>
     </>

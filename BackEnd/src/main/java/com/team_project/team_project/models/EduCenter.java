@@ -3,6 +3,7 @@ package com.team_project.team_project.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.http.ResponseEntity;
 
 @Data
 @Entity
@@ -20,5 +21,6 @@ public class EduCenter {
     private String phoneNumber;
     private String type;
     private String link;
+
 
 }

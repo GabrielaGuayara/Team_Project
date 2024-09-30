@@ -43,6 +43,7 @@ public class SecurityConfig {
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/jobseekerprofiles/create", "/jobseekerprofiles/all").permitAll()
                         .requestMatchers("/admin/edu-centers/**", "/admin/events").hasAuthority("ADMIN")
+                        .requestMatchers("/admin/edu-centers/**", "/admin/events/**").hasAuthority("ADMIN")
                         // This secured endpoints for admins
                         .anyRequest().authenticated()
                 )

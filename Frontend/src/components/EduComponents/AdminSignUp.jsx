@@ -32,7 +32,7 @@ function AdminSignUp() {
                     email: '',
                     password: '',
                     phoneNumber: '',
-                    role: 'EMPLOYEE'
+                    role: 'ADMIN'
                 });
                 setTimeout(() => {
                     navigate('/adminLogin');

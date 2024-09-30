@@ -1,7 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import ApiService from "../Services/ApiServices";
 
 function Navbar() {
+
+  const isAdmin = ApiService.isAdmin()
+  console.log(isAdmin)
+
+  const handleLogout = () =>{
+    localStorage.removeItem('token');
+        localStorage.removeItem('role');
+  }
   return (
     <div className="navbar bg-base-200">
       <div className="flex-1">
@@ -45,16 +54,43 @@ function Navbar() {
             </details>
           </li>
 
-          <li className="ml-4">
-            <Link to="/login" className="btn  btn-primary text-lg">
-              Login
+          { isAdmin ?
+          <>
+            <li>
+            <details className="relative z-50">
+              <summary className="text-lg">Admin</summary>
+              <ul className="bg-lightblue rounded-t-none p-1">
+               
+                <li>
+                  <Link to='/admin/dashboard'>Dashboard</Link>
+                </li>
+                <li>
+                  <a onClick={handleLogout}>Logout</a>
+                </li>
+              </ul>
+            </details>
+          </li>
+                  
+          </> 
+          :
+          <>
+            <li className="ml-4">
+            <Link to="/adminLogin" className="btn btn-primary text-lg">
+              Admin
             </Link>
           </li>
-          <li className="ml-4">
-            <Link to="/register" className="btn btn-primary text-lg">
-              Register
-            </Link>
-          </li>
+         <li className="ml-4">
+         <Link to="/login" className="btn  btn-primary text-lg">
+           Login
+         </Link>
+       </li>
+       <li className="ml-4">
+         <Link to="/register" className="btn btn-primary text-lg">
+           Register
+         </Link>
+       </li>
+</>
+          }
         </ul>
       </div>
     </div>
