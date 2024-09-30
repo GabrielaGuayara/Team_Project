@@ -27,7 +27,8 @@ import UserRegisterForm from "../screens/User/UserRegisterForm";
 import UserPrivateRoute from "../components/routeComponents/UserPrivateRoute";
 import UserRequestSupport from "../screens/User/UserRequestSupport";
 import RequestAssistanceForm from "../screens/User/RequestAssistanceForm";
-
+import JobSeekerView from "../screens/Employment/JobSeekerView";
+import RecruiterView from "../screens/Employment/RecruiterView";
 function Routes() {
   return (
     <>
@@ -89,6 +90,13 @@ function Routes() {
           <Route path="/adminLogin" element={<AdminLogin />} />
           <Route path="/adminSinup" element={<AdminSignUp />} />
           {/* Volunteer Routes */}
+
+
+          {/* Employemnt routes */}
+          <Route path="/job-seeker" element={<JobSeekerView />} />
+          <Route path="/recruiter" element={<RecruiterView />} />
+          {/* Employemnt routes */}
+          
         </R>
       </AuthProvider>
     </>
