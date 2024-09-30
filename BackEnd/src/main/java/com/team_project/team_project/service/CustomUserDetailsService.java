@@ -5,10 +5,15 @@ import com.team_project.team_project.models.User;
 import com.team_project.team_project.repository.SupportCounselorRepository;
 import com.team_project.team_project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -20,16 +25,19 @@ public class CustomUserDetailsService implements UserDetailsService {
     private SupportCounselorRepository supportCounselorRepository;
 
 
-    //Admin
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(username).orElse(null);
         if (user != null) {
+            String role = user.getRole();
+            GrantedAuthority authority = new SimpleGrantedAuthority(role);
+
             return org.springframework.security.core.userdetails.User.withUsername(user.getEmail())
                     .password(user.getPassword())
-                    .authorities("ADMIN")  // Assuming getRole() returns a collection of authorities
+                    .authorities(authority)
                     .build();
         }
+
 
 
         // If user not found, try to find SupportCounselor

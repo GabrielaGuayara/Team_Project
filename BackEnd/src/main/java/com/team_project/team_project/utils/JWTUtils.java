@@ -1,5 +1,6 @@
 package com.team_project.team_project.utils;
 
+import com.team_project.team_project.models.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,13 +16,14 @@ import java.util.Date;
 import java.util.function.Function;
 
 import static org.apache.tomcat.jni.SSLConf.apply;
+import static org.yaml.snakeyaml.tokens.Token.ID.Key;
 
 @Service
 public class JWTUtils {
 
     private static final long EXPIRATION_TIME =  1000L * 60 * 60 * 24 * 7; //This calculation secure the token will last 7 days
 
-    private final SecretKey key;
+    private static SecretKey key;
 
     //jwt constructor where we have to give value to the secret key which is double character or alphanumeric
     //The secret key is the algorithm that will help us to hash the use's password
@@ -32,15 +34,13 @@ public class JWTUtils {
         this.key = new SecretKeySpec(keyBytes, "HmacSHA256");
     }
 
-    //Method to generate generic token
-    public String generateToken(UserDetails userDetails){
+    public static String generateToken(User user) {
         return Jwts.builder()
-                .subject(userDetails.getPassword())
+                .subject(user.getUsername())
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME)) // Set expiration
+                .expiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(key)
                 .compact();
-
     }
 
     public String generateToken(SupportCounselor counselor) {

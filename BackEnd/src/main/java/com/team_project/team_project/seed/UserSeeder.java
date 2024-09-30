@@ -20,10 +20,11 @@ public class UserSeeder implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         User user1 = new User();
-        user1.setFirstName("Rat");
-        user1.setLastName("Jr");
-        user1.setEmail("Rat@gmail.com");
-        user1.setPassword("cheese");
+            user1.setFirstName("Admin");
+        user1.setLastName("Admin");
+        user1.setEmail("admin@gmail.com");
+        user1.setPassword("admin");
+        user1.setRole("ADMIN");
         user1.setIsVolunteer(false);
         user1.setInterests(List.of("jobs", "housing"));
 

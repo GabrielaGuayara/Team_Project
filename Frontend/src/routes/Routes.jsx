@@ -27,6 +27,7 @@ import UserRegisterForm from "../screens/User/UserRegisterForm";
 import UserPrivateRoute from "../components/routeComponents/UserPrivateRoute";
 import UserRequestSupport from "../screens/User/UserRequestSupport";
 import RequestAssistanceForm from "../screens/User/RequestAssistanceForm";
+import Dashboard from "../components/adminComponents/dashboard";
 
 function Routes() {
   return (
@@ -45,6 +46,7 @@ function Routes() {
           <Route path="/volunteer" element={<Volunteer />} />
           <Route path="/legal" element={<Legal />} />
           <Route path="/employment" element={<Employment />} />
+
 
           {/* User Routes */}
           <Route path="/register" element={<UserRegisterForm />} />
@@ -86,9 +88,15 @@ function Routes() {
           />
 
           <Route path="/testing" element={<VolunteerApplicantsDashboard />} />
+        
+          {/* Volunteer Routes */}
+
+          {/* ADMIN route */}
           <Route path="/adminLogin" element={<AdminLogin />} />
           <Route path="/adminSinup" element={<AdminSignUp />} />
-          {/* Volunteer Routes */}
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+       
+
         </R>
       </AuthProvider>
     </>

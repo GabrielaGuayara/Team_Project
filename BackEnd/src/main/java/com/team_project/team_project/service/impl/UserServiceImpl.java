@@ -57,6 +57,7 @@ public class UserServiceImpl implements IUserService {
         return response;
     }
 
+
     @Override
     public Response login(LoginRequest loginRequest) {
         Response response = new Response();
@@ -70,7 +71,7 @@ public class UserServiceImpl implements IUserService {
             var token = jwtUtils.generateToken(user);
             response.setStatusCode(200);
             response.setToken(token);
-            response.setRole("User");
+            response.setRole(user.getRole());
             response.setExpirationTime("7 Days");
             response.setMessage("Successful");
             response.setEmail(user.getEmail());
