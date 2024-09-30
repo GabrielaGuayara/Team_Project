@@ -33,14 +33,13 @@ public class UserServiceImpl implements IUserService {
         Response response = new Response();
         try {
             if (user.getRole() == null || user.getRole().isBlank()) {
-                user.setRole("User");
+                user.setRole("ADMIN");
             }
             if (userRepository.existsByEmail(user.getEmail())) {
                 throw new CustomException(user.getEmail() + " Already Exists");
             }
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             User savedUser = userRepository.save(user);
-            System.out.println("Saved user ID: " + savedUser.getId()); 
             var token = jwtUtils.generateToken(savedUser);
             response.setStatusCode(200);
             response.setMessage("User registered successfully");
@@ -48,8 +47,6 @@ public class UserServiceImpl implements IUserService {
             response.setEmail(savedUser.getEmail());
             response.setRole(user.getRole());
             response.setName(savedUser.getFirstName());
-            response.setExpirationTime("7 Days");
-            response.setToken(token);
         } catch (CustomException e) {
             response.setStatusCode(400);
             response.setMessage(e.getMessage());

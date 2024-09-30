@@ -50,6 +50,7 @@ public class UserController {
     public List<User> userList(){
         return userRepository.findAll();
     }
+
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
         if (userRepository.findById(user.getId()).isPresent()) {

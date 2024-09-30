@@ -50,6 +50,9 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<AssistanceRequest> assistanceRequests;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<EducationalEvents> events;
+
     @Override
     @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {

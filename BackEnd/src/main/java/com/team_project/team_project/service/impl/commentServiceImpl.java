@@ -1,7 +1,7 @@
 package com.team_project.team_project.service.impl;
 
 import com.team_project.team_project.models.Comment;
-import com.team_project.team_project.models.ESLCenter;
+import com.team_project.team_project.models.EduCenter;
 import com.team_project.team_project.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 

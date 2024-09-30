@@ -19,15 +19,15 @@ import static org.apache.tomcat.jni.SSLConf.apply;
 @Service
 public class JWTUtils {
 
-    private static final long EXPIRATION_TIME = 1000L * 60 *24 * 7; //This calculation secure the token will last 7 days
+    private static final long EXPIRATION_TIME =  1000L * 60 * 60 * 24 * 7; //This calculation secure the token will last 7 days
 
     private final SecretKey key;
 
     //jwt constructor where we have to give value to the secret key which is double character or alphanumeric
     //The secret key is the algorithm that will help us to hash the use's password
     public JWTUtils(){
-        String secretString = "R8H3q7Kz2N5v1Yp9T4Xw8Ue3S0Bf6Lq7J2M8r9Vt4A2C5E8D7G9Tz1Wk3Fh6Qj8";
-        byte[] keyBytes = Base64.getDecoder().decode(secretString.getBytes(StandardCharsets.UTF_8));
+        String secreteString = "843567893696976453275974432697R634976R738467TR678T34865R6834R8763T478378637664538745673865783678548735687R3";
+        byte[] keyBytes = Base64.getDecoder().decode(secreteString.getBytes(StandardCharsets.UTF_8));
 
         this.key = new SecretKeySpec(keyBytes, "HmacSHA256");
     }
@@ -37,7 +37,7 @@ public class JWTUtils {
         return Jwts.builder()
                 .subject(userDetails.getPassword())
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME)) // Set expiration
                 .signWith(key)
                 .compact();
 
@@ -48,6 +48,7 @@ public class JWTUtils {
                 .subject(counselor.getEmail())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME)) // Set expiration
                 .signWith(key)
                 .compact();
     }

@@ -46,6 +46,17 @@ public class JWTAuthFilter extends OncePerRequestFilter {
             return;
         }
 
+
+
+
+
+//
+//        if (requestURI.startsWith("/admin/events")) {
+//            filterChain.doFilter(request, response);
+//            return;
+//        }
+//
+
         if (authHeader == null || authHeader.isBlank()) {
             filterChain.doFilter(request, response);
             return;

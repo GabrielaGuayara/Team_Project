@@ -2,9 +2,9 @@ package com.team_project.team_project.config;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.team_project.team_project.models.ESLCenter;
+import com.team_project.team_project.models.EduCenter;
 import com.team_project.team_project.models.EducationalEvents;
-import com.team_project.team_project.repository.ESLRepository;
+import com.team_project.team_project.repository.EduCenterRepository;
 import com.team_project.team_project.repository.EventRepository;
 import org.slf4j.Logger;
 import org.springframework.boot.CommandLineRunner;
@@ -19,12 +19,12 @@ import java.util.List;
 public class LoadAppData implements CommandLineRunner {
 
     private final Logger logger = org.slf4j.LoggerFactory.getLogger(LoadAppData.class);
-    private final ESLRepository eslRepository;
+    private final EduCenterRepository eslRepository;
     private final EventRepository eventRepository;
 
     final ObjectMapper objectMapper;
 
-    public LoadAppData(ESLRepository eslRepository, EventRepository eventRepository, ObjectMapper objectMapper) {
+    public LoadAppData(EduCenterRepository eslRepository, EventRepository eventRepository, ObjectMapper objectMapper) {
         this.eslRepository = eslRepository;
         this.eventRepository = eventRepository;
         this.objectMapper = objectMapper;
@@ -41,12 +41,12 @@ public class LoadAppData implements CommandLineRunner {
     //Method to upload data from the ESLData json file
     private void loadESLCenters() {
         ObjectMapper mapper = new ObjectMapper();
-        TypeReference<List<ESLCenter>> typeReference = new TypeReference<List<ESLCenter>>() {
+        TypeReference<List<EduCenter>> typeReference = new TypeReference<List<EduCenter>>() {
         };
         InputStream inputStream = null;
         try {
             inputStream = new ClassPathResource("/data/eslData.json").getInputStream();
-            List<ESLCenter> eslCenters = mapper.readValue(inputStream, typeReference);
+            List<EduCenter> eslCenters = mapper.readValue(inputStream, typeReference);
             eslRepository.saveAll(eslCenters);
             logger.info("ESL Centers loaded successfully.");
         } catch (IOException e) {

@@ -29,6 +29,10 @@ import UserRequestSupport from "../screens/User/UserRequestSupport";
 import RequestAssistanceForm from "../screens/User/RequestAssistanceForm";
 import JobSeekerView from "../screens/Employment/JobSeekerView";
 import RecruiterView from "../screens/Employment/RecruiterView";
+import JobseekerProfile from "../screens/Employment/JobseekerProfile";
+import AvailaibleJobs from "../screens/Employment/AvailaibleJobs";
+import FindTalent from "../screens/Employment/FindTalent";
+import PostJob from "../screens/Employment/PostJob";
 function Routes() {
   return (
     <>
@@ -95,6 +99,10 @@ function Routes() {
           {/* Employemnt routes */}
           <Route path="/job-seeker" element={<JobSeekerView />} />
           <Route path="/recruiter" element={<RecruiterView />} />
+          <Route path="/professional-profile" element={<JobseekerProfile />} />
+          <Route path="/available-jobs" element={<AvailaibleJobs />} />
+          <Route path="/Find-Talent" element={<FindTalent />} />
+          <Route path="/post-job" element={<PostJob />} />
           {/* Employemnt routes */}
           
         </R>
