@@ -34,6 +34,7 @@ import AvailaibleJobs from "../screens/Employment/AvailaibleJobs";
 import FindTalent from "../screens/Employment/FindTalent";
 import PostJob from "../screens/Employment/PostJob";
 import Dashboard from "../components/adminComponents/dashboard";
+import UpdateEvent from "../components/adminComponents/UpdateEvent";
 
 function Routes() {
   return (
@@ -113,6 +114,8 @@ function Routes() {
           {/* Employemnt routes */}
           
           <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/dashboard/update/event/:id" element={<UpdateEvent />} />
+          <Route path="/admin/dashboard/update/edu-center/:id" element={<UpdateEvent />} />
        
 
         </R>

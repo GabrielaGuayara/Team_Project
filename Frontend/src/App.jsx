@@ -9,6 +9,8 @@ import SupportCounselorNavbar from "./components/SupportCounselorComponents/Supp
 import UserNavbar from "./components/UserComponents/UserNavbar";
 import { AuthContext } from "./authentication/AuthProvider";
 
+
+
 function App() {
   const { isAuthenticated, role } = useContext(AuthContext);
 
