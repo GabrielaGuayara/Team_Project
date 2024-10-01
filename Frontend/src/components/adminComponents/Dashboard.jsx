@@ -4,6 +4,8 @@ import AddNewEvent from './AddNewEvent';
 import AddNewCenter from './AddNewCenter';
 import AddNewAdmin from './AddNewAdmin';
 import Sidebar from './sidebar';
+import ViewAllEduCenters from './ViewAllEduCenters';
+import ViewAllEvents from './ViewAllEvents';
 
 function Dashboard() {
   const [activeComponent, setActiveComponent] = useState('Welcome');
@@ -16,6 +18,10 @@ function Dashboard() {
         return <AddNewCenter />;
       case 'addNewAdmin':
         return <AddNewAdmin/>
+      case 'viewAllEvents':
+        return <ViewAllEvents/>;
+      case 'viewAllCenters':
+        return <ViewAllEduCenters/>;
       default:
         return (
           <div className="text-center">

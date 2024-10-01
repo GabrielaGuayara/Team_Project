@@ -5,6 +5,9 @@ export default function Sidebar({ setActiveComponent, activeComponent }) {
     { name: 'Dashboard', component: 'default' },
     { name: 'Add New Event', component: 'addEvent' },
     { name: 'Add New Education Center', component: 'addCenter' },
+    { name: 'View All Events', component: 'viewAllEvents' },
+    { name: 'View All Education Center', component: 'viewAllCenters' },
+
   ];
 
   return (
@@ -22,7 +25,7 @@ export default function Sidebar({ setActiveComponent, activeComponent }) {
               className={`w-full text-left p-3 rounded-lg transition-colors duration-200 ${
                 activeComponent === item.component
                   ? 'bg-yellow text-white font-semibold'
-                  : 'hover:bg-yellow'
+                  : 'hover:bg-gray'
               }`}
             >
               {item.name}

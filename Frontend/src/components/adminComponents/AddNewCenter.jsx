@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 const AddNewCenter = () => {
 
-    const [centers, setCenters] = useState([]);
     const [formData, setFormData] = useState({
         name: '',
         organization: '',
@@ -16,19 +15,6 @@ const AddNewCenter = () => {
         link: '',
     });
 
-    useEffect(() => {
-        fetchCenters();
-    }, []);
-
-    const fetchCenters = async () => {
-        const response = await fetch('http://localhost:8080/auth/eduCenters/all',{
-          headers: {
-            'Content-Type': 'application/json'
-        },
-        }); 
-        const data = await response.json();
-        setCenters(data);
-    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -47,7 +33,7 @@ const AddNewCenter = () => {
         });
         if (response.ok) {
             window.alert('Center successfully submitted!!!')
-            fetchCenters();
+           
             setFormData({
                 name: '',
                 organization: '',
@@ -159,21 +145,7 @@ const AddNewCenter = () => {
                 <button type="submit" className="btn bg-gray-dark text-white">Add Edu Center</button>
             </form>
 
-            <h2 className="text-xl font-semibold mb-2">All Education Centers</h2>
-            <ul className="space-y-2">
-                {centers.map((center) => (
-                    <li key={center.id} className="card w-full bg-base-100 shadow-xl p-4">
-                        <h3 className="font-bold">{center.name}</h3>
-                        <p><strong>Organization:</strong> {center.organization}</p>
-                        <p><strong>Borough:</strong> {center.borough}</p>
-                        <p><strong>Address:</strong> {center.address}, {center.zipcode}</p>
-                        <p><strong>Phone:</strong> {center.phoneNumber}</p>
-                        <p><strong>Type:</strong> {center.type}</p>
-                        <p><strong>Location:</strong> {`(${center.latitude}, ${center.longitude})`}</p>
-                        <a href={center.link} className="link">Visit Website</a>
-                    </li>
-                ))}
-            </ul>
+        
         </div>
     );
 };

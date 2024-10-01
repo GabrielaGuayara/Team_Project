@@ -28,6 +28,7 @@ import UserPrivateRoute from "../components/routeComponents/UserPrivateRoute";
 import UserRequestSupport from "../screens/User/UserRequestSupport";
 import RequestAssistanceForm from "../screens/User/RequestAssistanceForm";
 import Dashboard from "../components/adminComponents/dashboard";
+import UpdateEvent from "../components/adminComponents/UpdateEvent";
 
 function Routes() {
   return (
@@ -95,6 +96,8 @@ function Routes() {
           <Route path="/adminLogin" element={<AdminLogin />} />
           <Route path="/adminSinup" element={<AdminSignUp />} />
           <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/dashboard/update/event/:id" element={<UpdateEvent />} />
+          <Route path="/admin/dashboard/update/edu-center/:id" element={<UpdateEvent />} />
        
 
         </R>
