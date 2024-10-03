@@ -30,38 +30,32 @@ public class AssistanceRequestController {
 
     @PostMapping("/create")
     public ResponseEntity<?> createAssistanceRequest(
-        @RequestParam("userId") Integer userId, 
-        @RequestParam("supportCounselorId") Integer supportCounselorId, 
-        @RequestBody AssistanceRequest assistanceRequest) {
-        
+            @RequestParam("userId") Integer userId,
+            @RequestParam("supportCounselorId") Integer supportCounselorId,
+            @RequestBody AssistanceRequest assistanceRequest) {
+
         try {
-            // Fetch the user based on the provided userId
             Optional<User> userOpt = userRepository.findById(userId);
             if (userOpt.isEmpty()) {
                 return ResponseEntity.badRequest().body("User not found");
             }
-            // Set the user to the assistance request
             assistanceRequest.setUser(userOpt.get());
-    
-            // Fetch the SupportCounselor based on the provided supportCounselorId
+
             Optional<SupportCounselor> supportCounselorOpt = supportCounselorRepository.findById(supportCounselorId);
             if (supportCounselorOpt.isEmpty()) {
                 return ResponseEntity.badRequest().body("Support Counselor not found");
             }
-            // Set the support counselor to the assistance request
             assistanceRequest.setSupportCounselor(supportCounselorOpt.get());
-    
-            // Set additional details for the assistance request
+
             assistanceRequest.setRequestedAt(LocalDateTime.now());
-            assistanceRequest.setStatus("Pending"); // Or any default status
-    
-            // Save the assistance request
+            assistanceRequest.setStatus("Pending");
+
             AssistanceRequest createdRequest = assistanceRequestService.createAssistanceRequest(assistanceRequest);
             return ResponseEntity.ok().body(createdRequest);
-    
+
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                                 .body("Error creating assistance request: " + e.getMessage());
+                    .body("Error creating assistance request: " + e.getMessage());
         }
     }
 

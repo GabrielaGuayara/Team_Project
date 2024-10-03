@@ -12,7 +12,7 @@ function SupportCounselorNavbar() {
   return (
     <div className="navbar bg-base-200">
       <div className="flex-1">
-        <Link className="btn btn-ghost text-xl" to="/dashboard">
+        <Link className="btn btn-ghost text-xl" to="/support-counsel-dashboard">
           HopeBridge - Counselor
         </Link>
       </div>

@@ -23,7 +23,7 @@ function RequestAssistanceForm() {
       console.log(description);
       console.log(serviceType);
       const response = await axios.post(
-        `http://localhost:8080/api/assistance-requests/create?userId=${userId}&supportCounselorId=${counselorId}`,
+        `http://localhost:8081/api/assistance-requests/create?userId=${userId}&supportCounselorId=${counselorId}`,
         {
           description,
           serviceType,

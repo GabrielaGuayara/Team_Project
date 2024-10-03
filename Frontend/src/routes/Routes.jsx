@@ -54,12 +54,11 @@ function Routes() {
           <Route path="/legal" element={<Legal />} />
           <Route path="/employment" element={<Employment />} />
 
-
           {/* User Routes */}
           <Route path="/register" element={<UserRegisterForm />} />
           <Route
             path="/support-counsel-assistance"
-            element={<UserPrivateRoute component={UserRequestSupport} />}
+            element={<UserRequestSupport />}
           />
           <Route
             path="/request-assistance/:counselorId"
@@ -95,14 +94,13 @@ function Routes() {
           />
 
           <Route path="/testing" element={<VolunteerApplicantsDashboard />} />
-        
+
           {/* Volunteer Routes */}
 
           {/* ADMIN route */}
           <Route path="/adminLogin" element={<AdminLogin />} />
           <Route path="/adminSinup" element={<AdminSignUp />} />
           {/* Volunteer Routes */}
-
 
           {/* Employemnt routes */}
           <Route path="/job-seeker" element={<JobSeekerView />} />
@@ -112,12 +110,16 @@ function Routes() {
           <Route path="/Find-Talent" element={<FindTalent />} />
           <Route path="/post-job" element={<PostJob />} />
           {/* Employemnt routes */}
-          
-          <Route path="/admin/dashboard" element={<Dashboard />} />
-          <Route path="/admin/dashboard/update/event/:id" element={<UpdateEvent />} />
-          <Route path="/admin/dashboard/update/edu-center/:id" element={<UpdateEvent />} />
-       
 
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route
+            path="/admin/dashboard/update/event/:id"
+            element={<UpdateEvent />}
+          />
+          <Route
+            path="/admin/dashboard/update/edu-center/:id"
+            element={<UpdateEvent />}
+          />
         </R>
       </AuthProvider>
     </>

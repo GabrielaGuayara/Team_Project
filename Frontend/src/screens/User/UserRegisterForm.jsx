@@ -39,7 +39,7 @@ function UserRegisterForm() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/users/register",
+        "http://localhost:8081/api/users/register",
         {
           firstName: formData.firstName,
           lastName: formData.lastName,
