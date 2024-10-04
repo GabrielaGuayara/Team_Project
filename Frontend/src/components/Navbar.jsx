@@ -28,7 +28,7 @@ function Navbar() {
       <div className="flex-none">
         <ul className="menu menu-horizontal px-3">
         <li>
-            <Link className="text-lg" to="/support-counsel">
+            <Link className="text-lg" to="/employment">
               Employment
             </Link>
           </li>
