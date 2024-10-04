@@ -6,12 +6,13 @@ function SupportCounselorDashboard() {
   const { token } = useContext(AuthContext);
   const [assistanceRequests, setAssistanceRequests] = useState([]);
   const [error, setError] = useState("");
-
+  const [filter, setFilter] = useState("All");
+  const counselorId = localStorage.getItem("userId");
   useEffect(() => {
     const fetchAssistanceRequests = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/counselor/assistance-requests",
+          `http://localhost:8081/api/assistance-requests/counselor/${counselorId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -19,6 +20,7 @@ function SupportCounselorDashboard() {
           }
         );
         setAssistanceRequests(response.data);
+        console.log(response.data);
       } catch (error) {
         setError("Error fetching assistance requests.");
       }
@@ -27,31 +29,133 @@ function SupportCounselorDashboard() {
     fetchAssistanceRequests();
   }, [token]);
 
+  const handleAccept = async (id) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8081/api/assistance-requests/update/${id}`,
+        {
+          status: "Accepted",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setAssistanceRequests((prevRequests) =>
+        prevRequests.map((request) =>
+          request.id === id ? { ...request, status: "Accepted" } : request
+        )
+      );
+    } catch (error) {
+      setError("Error accepting the request.");
+    }
+  };
+
+  const handleReject = async (id) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8081/api/assistance-requests/update/${id}`,
+        {
+          status: "Rejected",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setAssistanceRequests((prevRequests) =>
+        prevRequests.map((request) =>
+          request.id === id ? { ...request, status: "Rejected" } : request
+        )
+      );
+    } catch (error) {
+      setError("Error rejecting the request.");
+    }
+  };
+  const filteredRequests = assistanceRequests.filter((request) => {
+    if (filter === "All") return true;
+    return request.status === filter;
+  });
+
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+      <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-6">
         Assistance Requests
       </h1>
 
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p className="text-red-500 mb-4">{error}</p>}
+
+      <div className="mb-4 flex space-x-4">
+        <button
+          className={`btn ${filter === "All" ? "btn-primary" : ""}`}
+          onClick={() => setFilter("All")}
+        >
+          All
+        </button>
+        <button
+          className={`btn ${filter === "Pending" ? "btn-primary" : ""}`}
+          onClick={() => setFilter("Pending")}
+        >
+          Pending
+        </button>
+        <button
+          className={`btn ${filter === "Accepted" ? "btn-primary" : ""}`}
+          onClick={() => setFilter("Accepted")}
+        >
+          Accepted
+        </button>
+        <button
+          className={`btn ${filter === "Rejected" ? "btn-primary" : ""}`}
+          onClick={() => setFilter("Rejected")}
+        >
+          Rejected
+        </button>
+      </div>
 
       <div className="overflow-x-auto">
-        <table className="table-auto w-full">
+        <table className="table w-full">
           <thead>
-            <tr className="text-left bg-gray-200 dark:bg-gray-700">
-              <th className="p-2">Request ID</th>
-              <th className="p-2">User Name</th>
+            <tr className="text-left bg-base-200 dark:bg-gray-700">
+              <th className="p-2">ID</th>
+              <th className="p-2">Service Type</th>
+              <th className="p-2">First Name</th>
+              <th className="p-2">Last Name</th>
+              <th className="p-2">Email</th>
               <th className="p-2">Description</th>
               <th className="p-2">Status</th>
+              <th className="p-2">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {assistanceRequests.map((request) => (
-              <tr key={request.id} className="bg-white dark:bg-gray-800">
+            {filteredRequests.map((request) => (
+              <tr key={request.id} className="hover:bg-base-100">
                 <td className="p-2">{request.id}</td>
-                <td className="p-2">{request.userName}</td>
+                <td className="p-2">{request.serviceType}</td>
+                <td className="p-2">{request.user.firstName}</td>
+                <td className="p-2">{request.user.lastName}</td>
+                <td className="p-2">{request.user.email}</td>
                 <td className="p-2">{request.description}</td>
-                <td className="p-2">{request.status}</td>
+                <td className="p-2">
+                  <span className="badge badge-info">{request.status}</span>
+                </td>
+                <td className="p-2 space-x-2">
+                  <button
+                    className="btn btn-sm btn-success"
+                    onClick={() => handleAccept(request.id)}
+                    disabled={request.status !== "Pending"}
+                  >
+                    Accept
+                  </button>
+                  <button
+                    className="btn btn-sm btn-error"
+                    onClick={() => handleReject(request.id)}
+                    disabled={request.status !== "Pending"}
+                  >
+                    Reject
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function RequestAssistanceForm() {
   const [description, setDescription] = useState("");
@@ -18,12 +20,9 @@ function RequestAssistanceForm() {
     try {
       const token = localStorage.getItem("token");
       const userId = localStorage.getItem("userId");
-      console.log(counselorId);
-      console.log(userId);
-      console.log(description);
-      console.log(serviceType);
+
       const response = await axios.post(
-        `http://localhost:8080/api/assistance-requests/create?userId=${userId}&supportCounselorId=${counselorId}`,
+        `http://localhost:8081/api/assistance-requests/create?userId=${userId}&supportCounselorId=${counselorId}`,
         {
           description,
           serviceType,
@@ -38,21 +37,27 @@ function RequestAssistanceForm() {
 
       if (response.status === 200) {
         console.log(response.data);
+
+        toast.success("Request has been sent successfully!");
+        setDescription("");
+        setServiceType("");
+        navigate("/request-assistance/requests");
       }
     } catch (error) {
       console.error("Error submitting request: ", error);
       setError("Error submitting request. Please try again.");
+      toast.error("Failed to send the request.");
     }
   };
 
   return (
     <div className="p-8">
+      <ToastContainer />
       <h1 className="text-3xl font-bold mb-8 text-center">
         Request Assistance
       </h1>
       {error && <p className="text-red-500 text-center">{error}</p>}
       {success && <p className="text-green-500 text-center">{success}</p>}
-
       <form onSubmit={handleSubmit} className="space-y-6 max-w-md mx-auto">
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-white">

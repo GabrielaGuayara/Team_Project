@@ -11,6 +11,7 @@ function UserRegisterForm() {
     email: "",
     password: "",
     confirmPassword: "",
+    role: "User",
   });
 
   const [error, setError] = useState("");
@@ -20,10 +21,10 @@ function UserRegisterForm() {
   const { login } = useContext(AuthContext);
 
   const handleChange = (e) => {
-    const { id, value } = e.target;
+    const { id, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [id]: value,
+      [id]: type === "checkbox" ? (checked ? "ADMIN" : "User") : value,
     }));
   };
 
@@ -39,12 +40,13 @@ function UserRegisterForm() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/users/register",
+        "http://localhost:8081/api/users/register",
         {
           firstName: formData.firstName,
           lastName: formData.lastName,
           email: formData.email,
           password: formData.password,
+          role: formData.role,
         }
       );
 
@@ -153,6 +155,22 @@ function UserRegisterForm() {
                   />
                 </div>
               </div>
+
+              <div>
+                <label className="inline-flex items-center text-sm font-medium text-gray-700 dark:text-white">
+                  <input
+                    id="role"
+                    type="checkbox"
+                    checked={formData.role === "ADMIN"}
+                    onChange={handleChange}
+                    className="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-400 sm:text-sm"
+                  />
+                  <span className="ml-2">
+                    Do you want to register as an Admin?
+                  </span>
+                </label>
+              </div>
+
               <div>
                 <button
                   type="submit"
