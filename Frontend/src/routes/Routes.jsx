@@ -35,6 +35,7 @@ import FindTalent from "../screens/Employment/FindTalent";
 import PostJob from "../screens/Employment/PostJob";
 import Dashboard from "../components/adminComponents/dashboard";
 import UpdateEvent from "../components/adminComponents/UpdateEvent";
+import UserRequestsPage from "../screens/User/UserRequestsPage";
 
 function Routes() {
   return (
@@ -63,6 +64,10 @@ function Routes() {
           <Route
             path="/request-assistance/:counselorId"
             element={<RequestAssistanceForm />}
+          />
+          <Route
+            path="/request-assistance/requests"
+            element={<UserRequestsPage />}
           />
           {/* User Routes */}
 

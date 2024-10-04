@@ -7,11 +7,12 @@ function SupportCounselorDashboard() {
   const [assistanceRequests, setAssistanceRequests] = useState([]);
   const [error, setError] = useState("");
   const [filter, setFilter] = useState("All");
+  const counselorId = localStorage.getItem("userId");
   useEffect(() => {
     const fetchAssistanceRequests = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8081/api/assistance-requests/all",
+          `http://localhost:8081/api/assistance-requests/counselor/${counselorId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -19,6 +20,7 @@ function SupportCounselorDashboard() {
           }
         );
         setAssistanceRequests(response.data);
+        console.log(response.data);
       } catch (error) {
         setError("Error fetching assistance requests.");
       }
