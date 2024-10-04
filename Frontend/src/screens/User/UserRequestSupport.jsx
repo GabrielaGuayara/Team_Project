@@ -12,7 +12,7 @@ function UserRequestSupport() {
   useEffect(() => {
     const fetchCounselors = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/counselor");
+        const response = await axios.get("http://localhost:8081/api/counselor");
         setCounselors(response.data);
         setLoading(false);
       } catch (error) {

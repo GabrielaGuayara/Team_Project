@@ -52,7 +52,7 @@ function SupportCounselorRegisterForm() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/counselor/register",
+        "http://localhost:8081/api/counselor/register",
         {
           firstName: formData.firstName,
           lastName: formData.lastName,

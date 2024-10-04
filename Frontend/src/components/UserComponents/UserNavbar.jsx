@@ -1,11 +1,16 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../authentication/AuthProvider";
+import ApiService from "../../Services/ApiServices";
 
 function UserNavbar() {
+  const navigate = useNavigate();
+  const isAdmin = ApiService.isAdmin();
+  console.log(isAdmin);
   const { logout } = useContext(AuthContext);
   const handleLogout = () => {
     logout();
+    navigate("/");
   };
   return (
     <div className="navbar bg-base-200 relative z-50">
@@ -42,13 +47,8 @@ function UserNavbar() {
               <summary className="text-lg">Services</summary>
               <ul className="bg-base-100 rounded-t-none p-1">
                 <li>
-                  <Link className="text-lg" to="/legal">
-                    Legal Assistance
-                  </Link>
-                </li>
-                <li>
-                  <Link className="text-lg" to="/healthcare">
-                    Healthcare
+                  <Link className="text-lg" to="/request-assistance/requests">
+                    My Requests
                   </Link>
                 </li>
               </ul>

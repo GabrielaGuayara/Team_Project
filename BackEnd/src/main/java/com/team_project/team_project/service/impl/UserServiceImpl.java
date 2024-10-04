@@ -32,8 +32,11 @@ public class UserServiceImpl implements IUserService {
     public Response register(User user) {
         Response response = new Response();
         try {
-            if (user.getRole() == null || user.getRole().isBlank()) {
+            if (user.getRole() == "ADMIN") {
                 user.setRole("ADMIN");
+            }
+            if (user.getRole()== "User") {
+                user.setRole("User");
             }
             if (userRepository.existsByEmail(user.getEmail())) {
                 throw new CustomException(user.getEmail() + " Already Exists");
@@ -47,6 +50,7 @@ public class UserServiceImpl implements IUserService {
             response.setEmail(savedUser.getEmail());
             response.setRole(user.getRole());
             response.setName(savedUser.getFirstName());
+            response.setToken(token);
         } catch (CustomException e) {
             response.setStatusCode(400);
             response.setMessage(e.getMessage());

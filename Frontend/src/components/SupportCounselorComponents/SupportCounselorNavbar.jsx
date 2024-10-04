@@ -1,18 +1,20 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../authentication/AuthProvider";
 
 function SupportCounselorNavbar() {
+  const navigate = useNavigate();
   const { logout } = useContext(AuthContext);
 
   const handleLogout = () => {
     logout();
+    navigate("/");
   };
 
   return (
     <div className="navbar bg-base-200">
       <div className="flex-1">
-        <Link className="btn btn-ghost text-xl" to="/dashboard">
+        <Link className="btn btn-ghost text-xl" to="/support-counsel-dashboard">
           HopeBridge - Counselor
         </Link>
       </div>
