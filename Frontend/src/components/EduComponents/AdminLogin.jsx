@@ -19,11 +19,10 @@ const AdminLogin = () => {
           localStorage.setItem('token', response.token);
           localStorage.setItem('role', response.role);
 
-          navigate("/home");
+          navigate("/admin/dashboard");
         }
       } catch (error) {
-        setError(error.message);
-        setTimeout(() => setError(''), 5000);
+        console.log(error.message)
       }
     };
   

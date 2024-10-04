@@ -19,7 +19,7 @@ public class EduCenterController {
     @Autowired
     private EduCenterService eduCenterService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/get-by-id/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<EduCenter> getEduCenterById(@PathVariable Integer id) {
         return eduCenterService.getEduCenterById(id)
@@ -27,14 +27,14 @@ public class EduCenterController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("/add")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<EduCenter> createEduCenter(@RequestBody EduCenter eduCenter) {
         EduCenter savedEduCenter = eduCenterService.createEduCenter(eduCenter);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedEduCenter);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<EduCenter> updateEduCenter(@PathVariable Integer id, @RequestBody EduCenter eduCenter) {
         return ResponseEntity.ok(eduCenterService.updateEduCenter(id, eduCenter));
@@ -42,7 +42,7 @@ public class EduCenterController {
 
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Void> deleteEduCenter(@PathVariable Integer id) {
         try {

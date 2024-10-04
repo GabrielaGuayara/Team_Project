@@ -1,16 +1,23 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import ApiService from "../Services/ApiServices";
+
 
 function Navbar() {
 
+  const navigate = useNavigate();
   const isAdmin = ApiService.isAdmin()
   console.log(isAdmin)
 
-  const handleLogout = () =>{
-    localStorage.removeItem('token');
-        localStorage.removeItem('role');
-  }
+  const handleLogout = () => {
+    const isLogout = window.confirm("Are you sure you want to logout?");
+    if (isLogout) {
+      ApiService.logout();
+      navigate('/home');
+    }
+  };
+
+
   return (
     <div className="navbar bg-base-200">
       <div className="flex-1">
@@ -54,8 +61,7 @@ function Navbar() {
             </details>
           </li>
 
-          { isAdmin ?
-          <>
+          { isAdmin &&
             <li>
             <details className="relative z-50">
               <summary className="text-lg">Admin</summary>
@@ -70,15 +76,14 @@ function Navbar() {
               </ul>
             </details>
           </li>
-                  
-          </> 
-          :
-          <>
+}
+          {!isAdmin &&  
             <li className="ml-4">
             <Link to="/adminLogin" className="btn btn-primary text-lg">
               Admin
             </Link>
           </li>
+}
          <li className="ml-4">
          <Link to="/login" className="btn  btn-primary text-lg">
            Login
@@ -89,8 +94,7 @@ function Navbar() {
            Register
          </Link>
        </li>
-</>
-          }
+          
         </ul>
       </div>
     </div>

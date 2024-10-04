@@ -9,7 +9,6 @@ function AdminSignUp() {
         name: '',
         email: '',
         password: '',
-        phoneNumber: '',
         role: 'ADMIN'  // Default role
     });
 
@@ -31,7 +30,6 @@ function AdminSignUp() {
                     name: '',
                     email: '',
                     password: '',
-                    phoneNumber: '',
                     role: 'ADMIN'
                 });
                 setTimeout(() => {
@@ -94,7 +92,7 @@ function AdminSignUp() {
                     </button>
                 </form>
                 <p className="text-blue-800 hover:underline">
-                    Already have an account? <Link to="/login">Login</Link>
+                    Already have an account? <Link to="/adminLogin">Login</Link>
                 </p>
             </div>
         </div>

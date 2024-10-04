@@ -45,9 +45,7 @@ const ViewAllEduCenters = () => {
     };
 
 
-    const handleUpdate = (eventId) =>{  
-      navigate(`/admin/dashboard/update/edu-center/${eventId}`);
-    }
+
 
     return (
         <div>
@@ -73,7 +71,8 @@ const ViewAllEduCenters = () => {
                                 <td className="px-6 py-4 text-sm font-medium text-gray-800">{item.type}</td>
                                 <td className="px-6 py-4 text-right text-sm font-medium">
                                     <button 
-                                    onClick={() => handleUpdate(item.id)}
+                                   
+                                    onClick={() => navigate(`/admin/dashboard/update/edu-center/${item.id}`)}
                                     className="inline-flex items-center gap-x-2 text-sm font-semibold text-blue hover:text-blue transition duration-300 ease-in-out">
                                       Update
                                     </button>
