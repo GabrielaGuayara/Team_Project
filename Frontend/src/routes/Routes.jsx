@@ -51,7 +51,7 @@ function Routes() {
           <Route path="/events" element={<Event />} />
           <Route path="/financialAidForm" element={<FinancialAidForm />} />
           <Route path="/suggestionsForm" element={<SuggestionForm />} />
-          <Route path="/eslCenters" element={<EduCenters />} />
+          <Route path="/eduCenters" element={<EduCenters />} />
           <Route path="/healthcare" element={<Healthcare />} />
           <Route path="/volunteer" element={<Volunteer />} />
           <Route path="/legal" element={<Legal />} />
