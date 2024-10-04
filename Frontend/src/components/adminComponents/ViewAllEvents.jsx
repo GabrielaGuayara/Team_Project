@@ -46,7 +46,7 @@ const ViewAllEvents = () => {
 
 
     const handleUpdate = (eventId) =>{  
-      navigate(`/admin/dashboard/update/event/${eventId}`);
+      navigate(`/admin/dashboard/update/events/${eventId}`);
     }
 
     return (
@@ -74,15 +74,14 @@ const ViewAllEvents = () => {
                                 <td className="px-6 py-4 text-sm font-medium text-gray-800">{item.type}</td>
                                 <td className="px-6 py-4 text-right text-sm font-medium">
                                     <button 
-                                    onClick={() => handleUpdate(item.id)}
+                                    onClick={() =>navigate(`/admin/dashboard/update/events/${item.id}`)}
                                     className="inline-flex items-center gap-x-2 text-sm font-semibold text-blue hover:text-blue transition duration-300 ease-in-out">
                                       Update
                                     </button>
                                     <button
                                         onClick={() => handleDelete(item.id)}
                                         className="inline-flex items-center gap-x-2 text-sm font-semibold text-red hover:text-red transition duration-300 ease-in-out">
-                                        Delete
-                                    </button>
+                                        Delete                                    </button>
                                 </td>
                             </tr>
                         ))}

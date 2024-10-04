@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddNewCenter = () => {
 
@@ -23,7 +25,7 @@ const AddNewCenter = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:8080/admin/edu-centers', {
+        const response = await fetch('http://localhost:8080/admin/edu-centers/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -32,7 +34,7 @@ const AddNewCenter = () => {
             body: JSON.stringify(formData),
         });
         if (response.ok) {
-            window.alert('Center successfully submitted!!!')
+           toast.success('Center successfully submitted!!!')
            
             setFormData({
                 name: '',
@@ -51,6 +53,8 @@ const AddNewCenter = () => {
 
     return (
         <div className="p-4 max-w-md m-auto">
+            <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
+
             <h1 className="text-2xl font-bold mb-4">Add New Education Center</h1>
             <form onSubmit={handleSubmit} className="mb-6 space-y-4">
                 <input 
