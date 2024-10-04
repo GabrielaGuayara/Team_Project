@@ -10,7 +10,8 @@ const programTypes = [
 ];
 
 const EduCenters = () => {
-  const position = [40.712776, -74.005974]; // Default to New York City coordinates
+  //Set default NYC cordinates
+  const position = [40.712776, -74.005974]; 
   const [searchAddress, setSearchAddress] = useState("");
   const [selectedType, setSelectedType] = useState("All");
   const [centers, setCenters] = useState([]);
@@ -21,6 +22,7 @@ const EduCenters = () => {
   const [mapCenter, setMapCenter] = useState(position);
   const [mapZoom, setMapZoom] = useState(13);
 
+  //Fetch Center when component mounts
   useEffect(() => {
     fetchCenters();
   }, []);
@@ -36,12 +38,14 @@ const EduCenters = () => {
     }
   };
 
+  //Handle Search and filter centers by type
   const handleSearch = async (e) => {
     e.preventDefault();
     let filtered = centers.filter(center =>
       (selectedType === "All" || center.type === selectedType)
     );
 
+    // Geocode the address to get latitude and longitude
     if (searchAddress) {
       const geocodeResponse = await fetch(`https://nominatim.openstreetmap.org/search?q=${searchAddress}, NYC&format=json&limit=1`);
       const geocodeData = await geocodeResponse.json();
@@ -69,6 +73,7 @@ const EduCenters = () => {
     setMapZoom(13);
   };
 
+    // Fetch address suggestions as the user types
   const fetchAddressSuggestions = async (value) => {
     if (value) {
       try {
@@ -83,6 +88,7 @@ const EduCenters = () => {
     }
   };
 
+  // Update search address state and fetch suggestions
   const handleAddressChange = (value) => {
     setSearchAddress(value);
     fetchAddressSuggestions(value);
@@ -124,27 +130,30 @@ const EduCenters = () => {
   return (
     <div className="p-10 min-h-[85vh]">
       <h1 className="text-2xl font-bold mb-4">ESL Centers</h1>
+      
       <form onSubmit={handleSearch} className="mb-4">
-        <input
-          type="text"
-          placeholder="Search by address"
-          value={searchAddress}
-          onChange={(e) => handleAddressChange(e.target.value)}
-          className="p-2 border border-gray-300 rounded mr-2"
-        />
-        {suggestions.length > 0 && (
-          <ul className="border border-gray-300 rounded bg-white absolute z-10">
-            {suggestions.map((suggestion) => (
-              <li
-                key={suggestion.place_id}
-                onClick={() => handleSuggestionClick(suggestion.display_name)}
-                className="p-2 hover:bg-gray-200 cursor-pointer"
-              >
-                {suggestion.display_name}
-              </li>
-            ))}
-          </ul>
-        )}
+        <div className='mb-10 '>
+          <input
+            type="text"
+            placeholder="Search by address"
+            value={searchAddress}
+            onChange={(e) => handleAddressChange(e.target.value)}
+            className="p-2 border border-gray-300 rounded mr-2 w-1/2"
+          />
+          {suggestions.length > 0 && (
+            <ul className="border border-gray-300 rounded bg-white absolute z-10">
+              {suggestions.map((suggestion) => (
+                <li
+                  key={suggestion.place_id}
+                  onClick={() => handleSuggestionClick(suggestion.display_name)}
+                  className="p-2 hover:bg-gray-200 cursor-pointer"
+                >
+                  {suggestion.display_name}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
         <select
           value={selectedType}
           onChange={(e) => setSelectedType(e.target.value)}
@@ -154,10 +163,10 @@ const EduCenters = () => {
             <option key={type} value={type}>{type}</option>
           ))}
         </select>
-        <button type="submit" className="p-2 bg-red-500 text-white rounded mr-2">
+        <button type="submit" className="p-2 bg-red-500 text-white bg-red rounded mr-2">
           Search
         </button>
-        <button type="button" onClick={handleClearFilters} className="p-2 bg-gray-300 rounded">
+        <button type="button" onClick={handleClearFilters} className="p-2 bg-green text-white rounded">
           Clear Filters
         </button>
       </form>
@@ -169,12 +178,12 @@ const EduCenters = () => {
             <div className="mt-4">
               <h3 className="font-bold">Search Results:</h3>
               {filteredCenters.map((center) => (
-                <div key={center.id} className="mt-2 p-2 border rounded">
+                <div key={center.id} className="mt-2 p-2 border rounded shadow-sm shadow-yellow">
                   <h4 className="font-semibold">{center.name}</h4>
                   <p>{center.address}</p>
                   <p>Type: {center.type}</p>
                   {center.distance && <p>Distance: {center.distance.toFixed(2)} km</p>}
-                  <a href={center.applyLink} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                  <a href={center.link} target="_blank" rel="noopener noreferrer" className="text-black bg-yellow rounded font-bold hover:underline">
                     Apply Now
                   </a>
                 </div>
@@ -197,7 +206,17 @@ const EduCenters = () => {
                     click: () => handleMarkerClick(center),
                   }}
                 >
-                  <Popup>{center.name}</Popup>
+                  <Popup>
+                    <div>
+                      <h4 className="font-semibold">{center.name}</h4>
+                      <p>{center.address}</p>
+                      <p>Type: {center.type}</p>
+                      {center.distance && <p>Distance: {center.distance.toFixed(2)} km</p>}
+                      <a href={center.link} target="_blank" rel="noopener noreferrer" className="text-black bg-yellow rounded font-bold p-1 hover:underline">
+                        Apply Now
+                      </a>
+                    </div>
+                  </Popup>
                 </Marker>
               ) : null
             ))}
@@ -205,22 +224,9 @@ const EduCenters = () => {
           </MapContainer>
         </div>
       </div>
-      {selectedCenter && (
-        <div className="mt-4 p-4 border rounded">
-          <h2 className="font-bold">{selectedCenter.name}</h2>
-          <p>{selectedCenter.address}</p>
-          <p>Type: {selectedCenter.type}</p>
-          <p>Distance: {selectedCenter.distance ? selectedCenter.distance.toFixed(2) + ' km' : 'N/A'}</p>
-          <a href={selectedCenter.applyLink} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-            Apply Now
-          </a>
-        </div>
-      )}
+    
     </div>
   );
 };
 
 export default EduCenters;
-
-
-
