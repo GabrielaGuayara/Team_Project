@@ -27,21 +27,40 @@ function Navbar() {
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-3">
-          <li>
-            <Link className="text-lg" to="/employment">
+        <li>
+            <Link className="text-lg" to="/support-counsel">
               Employment
             </Link>
           </li>
           <li>
-            <Link className="text-lg" to="/education">
-              Education
-            </Link>
-          </li>
+            <details className="relative z-50">
+              <summary className="text-lg">Education</summary>
+              <ul className="bg-base-100 rounded-t-none p-1">
+                <li>
+                  <Link className="text-lg" to="/financialAidForm">
+                   Financial Aid Calculator
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-lg" to="/eduCenters">
+                   Educational Centers
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-lg" to="/events">
+                  Educational Events
+                  </Link>
+                </li>
+              </ul>
+            </details>
+    </li>
+          
           <li>
             <Link className="text-lg" to="/support-counsel">
               Support Counsel
             </Link>
           </li>
+          
 
           <li>
             <details className="relative z-50">
