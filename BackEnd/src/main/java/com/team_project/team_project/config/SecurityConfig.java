@@ -41,6 +41,8 @@ public class SecurityConfig {
                         .requestMatchers("/api/assistance-requests", "/api/assistance-requests/create", "/api/assistance-requests/all", "/api/assistance-requests/{id}", 
                         "/api/assistance-requests/counselor/{counselorId}", "/api/assistance-requests/user/{userId}", "/api/assistance-requests/update/{id}", "/api/assistance-requests/delete/{id}").permitAll()
                         .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/jobseekerprofiles/create", "/jobseekerprofiles/all").permitAll()
+                        .requestMatchers("/admin/edu-centers/**", "/admin/events").hasAuthority("ADMIN")
                         .requestMatchers("/admin/edu-centers/**", "/admin/events/**").hasAuthority("ADMIN")
                         // This secured endpoints for admins
                         .anyRequest().authenticated()

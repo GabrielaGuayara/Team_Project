@@ -1,7 +1,6 @@
 import React from "react";
 import eduBackground from "../assets/eduBackground.png"
 import { Link } from "react-router-dom";
-
 const Education = () => {
   return (
     <>

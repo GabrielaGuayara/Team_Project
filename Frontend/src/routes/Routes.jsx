@@ -26,6 +26,12 @@ import UserRegisterForm from "../screens/User/UserRegisterForm";
 import UserPrivateRoute from "../components/routeComponents/UserPrivateRoute";
 import UserRequestSupport from "../screens/User/UserRequestSupport";
 import RequestAssistanceForm from "../screens/User/RequestAssistanceForm";
+import JobSeekerView from "../screens/Employment/JobSeekerView";
+import RecruiterView from "../screens/Employment/RecruiterView";
+import JobseekerProfile from "../screens/Employment/JobseekerProfile";
+import AvailaibleJobs from "../screens/Employment/AvailaibleJobs";
+import FindTalent from "../screens/Employment/FindTalent";
+import PostJob from "../screens/Employment/PostJob";
 import Dashboard from "../components/adminComponents/dashboard";
 import UpdateEvent from "../components/adminComponents/UpdateEvent";
 import UpdateEduCenter from "../components/adminComponents/UpdateEduCenter";
@@ -93,7 +99,19 @@ function Routes() {
 
           {/* ADMIN route */}
           <Route path="/adminLogin" element={<AdminLogin />} />
+
           <Route path="/adminSignup" element={<AdminSignUp />} />
+
+
+          {/* Employemnt routes */}
+          <Route path="/job-seeker" element={<JobSeekerView />} />
+          <Route path="/recruiter" element={<RecruiterView />} />
+          <Route path="/professional-profile" element={<JobseekerProfile />} />
+          <Route path="/available-jobs" element={<AvailaibleJobs />} />
+          <Route path="/Find-Talent" element={<FindTalent />} />
+          <Route path="/post-job" element={<PostJob />} />
+          {/* Employemnt routes */}
+          
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/dashboard/update/event/:id" element={<UpdateEvent />} />
           <Route path="/admin/dashboard/update/events/:eventId" element={<UpdateEvent/>} />
