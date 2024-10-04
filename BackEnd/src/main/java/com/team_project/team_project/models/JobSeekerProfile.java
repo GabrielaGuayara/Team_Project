@@ -23,31 +23,31 @@ public class JobSeekerProfile {
     private String linkedInProfile;
     private String professionalSummary;
 
-    @ElementCollection
-    private List<String> keySkills;
-
-    @ElementCollection
-    @CollectionTable(name = "work_experience", joinColumns = @JoinColumn(name = "job_seeker_profile_id"))
-    private List<WorkExperience> workExperience;
-
-    @ElementCollection
-    @CollectionTable(name = "education", joinColumns = @JoinColumn(name = "job_seeker_profile_id"))
-    private List<Education> education;
-
-    @ElementCollection
-    private List<String> certifications;
-
-    @ElementCollection
-    private List<String> projects;
-
-    @ElementCollection
-    private List<String> volunteerExperience;
-
-    @ElementCollection
-    private List<String> languagesSpoken;
-
-    @ElementCollection
-    private List<String> references;
+//    @ElementCollection
+//    private List<String> keySkills;
+//
+//    @ElementCollection
+//    @CollectionTable(name = "work_experience", joinColumns = @JoinColumn(name = "job_seeker_profile_id"))
+//    private List<WorkExperience> workExperience;
+//
+//    @ElementCollection
+//    @CollectionTable(name = "education", joinColumns = @JoinColumn(name = "job_seeker_profile_id"))
+//    private List<Education> education;
+//
+//    @ElementCollection
+//    private List<String> certifications;
+//
+//    @ElementCollection
+//    private List<String> projects;
+//
+//    @ElementCollection
+//    private List<String> volunteerExperience;
+//
+//    @ElementCollection
+//    private List<String> languagesSpoken;
+//
+//    @ElementCollection
+//    private List<String> references;
 
     // Getters and Setters
 }

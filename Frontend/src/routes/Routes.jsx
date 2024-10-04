@@ -11,7 +11,6 @@ import VolunteerEventForm from "../screens/Volunteer/Forms/VolunteerEventForm";
 import VolunteerApplicantsDashboard from "../screens/Volunteer/Dashboard/VolunteerApplicantsDashboard";
 import FinancialAidForm from "../components/EduComponents/Form";
 import EduCenters from "../components/EduComponents/eduCenters";
-import QAPage from "../components/EduComponents/QAPage";
 import Event from "../components/EduComponents/events";
 import SuggestionForm from "../components/EduComponents/SuggestionForm";
 import AdminLogin from "../components/EduComponents/AdminLogin";
@@ -36,6 +35,11 @@ import PostJob from "../screens/Employment/PostJob";
 import Dashboard from "../components/adminComponents/dashboard";
 import UpdateEvent from "../components/adminComponents/UpdateEvent";
 
+import UserRequestsPage from "../screens/User/UserRequestsPage";
+
+import UpdateEduCenter from "../components/adminComponents/UpdateEduCenter";
+
+
 function Routes() {
   return (
     <>
@@ -44,7 +48,6 @@ function Routes() {
           <Route path="/home" element={<Homepage />} />
           <Route path="/" element={<Homepage />} />
           <Route path="/education" element={<Education />} />
-          <Route path="/questiosn-and-answers" element={<QAPage />} />
           <Route path="/events" element={<Event />} />
           <Route path="/financialAidForm" element={<FinancialAidForm />} />
           <Route path="/suggestionsForm" element={<SuggestionForm />} />
@@ -54,16 +57,19 @@ function Routes() {
           <Route path="/legal" element={<Legal />} />
           <Route path="/employment" element={<Employment />} />
 
-
           {/* User Routes */}
           <Route path="/register" element={<UserRegisterForm />} />
           <Route
             path="/support-counsel-assistance"
-            element={<UserPrivateRoute component={UserRequestSupport} />}
+            element={<UserRequestSupport />}
           />
           <Route
             path="/request-assistance/:counselorId"
             element={<RequestAssistanceForm />}
+          />
+          <Route
+            path="/request-assistance/requests"
+            element={<UserRequestsPage />}
           />
           {/* User Routes */}
 
@@ -95,14 +101,13 @@ function Routes() {
           />
 
           <Route path="/testing" element={<VolunteerApplicantsDashboard />} />
-        
+
           {/* Volunteer Routes */}
 
           {/* ADMIN route */}
           <Route path="/adminLogin" element={<AdminLogin />} />
-          <Route path="/adminSinup" element={<AdminSignUp />} />
-          {/* Volunteer Routes */}
 
+          <Route path="/adminSignup" element={<AdminSignUp />} />
 
           {/* Employemnt routes */}
           <Route path="/job-seeker" element={<JobSeekerView />} />
@@ -112,12 +117,24 @@ function Routes() {
           <Route path="/Find-Talent" element={<FindTalent />} />
           <Route path="/post-job" element={<PostJob />} />
           {/* Employemnt routes */}
+
           
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/dashboard/update/event/:id" element={<UpdateEvent />} />
-          <Route path="/admin/dashboard/update/edu-center/:id" element={<UpdateEvent />} />
+          <Route path="/admin/dashboard/update/events/:eventId" element={<UpdateEvent/>} />
+          <Route path="/admin/dashboard/update/edu-center/:eduCenterId" element={<UpdateEduCenter/>} />
        
 
+
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route
+            path="/admin/dashboard/update/event/:id"
+            element={<UpdateEvent />}
+          />
+          <Route
+            path="/admin/dashboard/update/edu-center/:id"
+            element={<UpdateEvent />}
+          />
         </R>
       </AuthProvider>
     </>

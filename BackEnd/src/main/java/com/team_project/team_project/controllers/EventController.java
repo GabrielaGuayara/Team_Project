@@ -22,7 +22,7 @@ public class EventController {
         return eventService.getAllEvents();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get-by-id/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<EducationalEvents> getEventById(@PathVariable Integer id) {
         return eventService.getEventById(id).map(event ->
@@ -37,13 +37,13 @@ public class EventController {
         return eventService.createEvent(event);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<EducationalEvents> updateEvent(@PathVariable Integer id, @RequestBody EducationalEvents eventDetails) {
         return ResponseEntity.ok(eventService.updateEvent(id, eventDetails));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Void> deleteEvent(@PathVariable Integer id) {
         eventService.deleteEvent(id);
